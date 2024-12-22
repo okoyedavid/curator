@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+
+.navList {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  font-family: "Exo 2", serif;
+  font-optical-sizing: auto;
+}
+.navLink:link,
+.navLink:visited {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  color: var(--color-grey-600);
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 1.2rem 2.8rem;
+  transition: all 0.3s;
+}
+
+.navLink:hover,
+.navLink:active,
+:global(.active) {
+  color: var(--color-grey-800);
+  border-radius: var(--border-radius-sm);
+}
+
+.navLink > button > svg,
+.navLink:active,
+:global(.active) {
+  color: var(--color-brand-50);
+  border-radius: var(--border-radius-sm);
+}
+.navLink svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  .navLink > button > svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    color: var(--color-grey-400);
+    transition: all 0.3s;
+  }
+  color: var(--color-grey-400);
+  transition: all 0.3s;
+}
+
+.navLink:hover svg,
+.navLink:active svg,
+:global(.active) svg {
+  color: var(--color-brand-600);
+}
+
+.header {
+  /* 
+  background-color: var(--color-grey-0); */
+  /* 
+  border-bottom: 1px solid var(--color-grey-100); */
+  padding: 1rem 3rem;
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+
+  background-color: var(--color-grey-0);
+  top: 0;
+
+  z-index: 100;
+}
+
+@media (max-width: 450px) {
+  .navLink:link,
+  .navLink:visited {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+    color: var(--color-grey-600);
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 1.4rem 0;
+    transition: all 0.3s;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    max-width: 100vw;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--color-grey-0);
+    padding: 0;
+    width: 80vw; /* 80% of the viewport width */
+    height: 100%; /* Full height of the viewport */
+    max-width: 100%;
+    right: -80vw;
+    transition: all 0.8s ease-in-out;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .navList {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    margin-top: 8rem;
+  }
+
+  .navLink svg {
+    width: 3.4rem;
+    height: 3.4rem;
+    .navLink > button > svg {
+      width: 3.4rem;
+      height: 3.4rem;
+      color: var(--color-grey-400);
+      transition: all 0.3s;
+      font-size: 2rem;
+    }
+  }
+
+  .hamMenu {
+    width: 65px;
+    height: 50px;
+    margin-left: auto;
+    position: fixed;
+    z-index: 9000;
+    right: 0;
+    margin-right: 20px;
+  }
+
+  .span {
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-brand-600);
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s ease;
+  }
+
+  .span:nth-child(1) {
+    top: 25%;
+  }
+
+  .span:nth-child(3) {
+    top: 75%;
+  }
+
+  .hamMenu.active .span:nth-child(1) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .hamMenu.active .span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamMenu.active .span:nth-child(3) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
