@@ -3,9 +3,9 @@
 :root {
   --delay: 0s;
   --font-family: "Inter", sans-serif;
-  --bg-color: #4338ca;
+  --bg-color: #252954;
   --body-color: #9b9ca7;
-  --main-bg: #111827;
+  --main-bg: #0e0e23;
 }
 
 * {
