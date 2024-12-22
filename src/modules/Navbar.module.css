@@ -133,10 +133,9 @@
     width: 65px;
     height: 50px;
     margin-left: auto;
-    position: fixed;
-    z-index: 9000;
-    right: 0;
-    margin-right: 20px;
+    position: absolute;
+    right: 10%;
+    z-index: 100;
   }
 
   .span {

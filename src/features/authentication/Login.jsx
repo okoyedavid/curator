@@ -7,7 +7,7 @@ import FormRowVertical from "../../ui/FormRowVertical";
 import Dark from "/login-dark.jpeg";
 import Light from "/login-light.jpeg";
 import { useDarkMode } from "../../context/DarkModeContext";
-//import { useLogin } from "./useLogin";
+import { useLogin } from "./useLogin";
 //import SpinnerMini from "../../ui/SpinnerMini";
 
 function Login() {
@@ -31,18 +31,18 @@ function LoginForm() {
   const [email, setEmail] = useState("okoyedav@gmail.com");
   const [password, setPassword] = useState("Okoyedav7$");
 
-  //   const { login, isLoading } = ();
+  const { login, isLoading } = useLogin();
   function handleSubmit(e) {
     e.preventDefault();
 
-    //     if (!email || !password) return;
+    if (!email || !password) return;
 
-    //     const user = { email, password };
-    //     login(user, {
-    //       onSettled: () => {
-    //         setEmail(""), setPassword("");
-    //       },
-    //     });
+    const user = { email, password };
+    login(user, {
+      onSettled: () => {
+        setEmail(""), setPassword("");
+      },
+    });
   }
 
   return (
@@ -51,6 +51,7 @@ function LoginForm() {
         <Input
           type="email"
           id="email"
+          disabled={isLoading}
           // This makes this form better for password managers
           autoComplete="username"
           value={email}
@@ -63,6 +64,7 @@ function LoginForm() {
           id="password"
           autoComplete="current-password"
           value={password}
+          disabled={isLoading}
           onChange={(e) => setPassword(e.target.value)}
         />
       </FormRowVertical>

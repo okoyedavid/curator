@@ -6,6 +6,8 @@ import { Toaster } from "react-hot-toast";
 
 import SpinnerFullPage from "./ui/SpinnerFullPage.jsx";
 import Login from "./pages/Login.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import UserPage from "./features/Dashboard/UserPage.jsx";
 
 const MainLayout = lazy(() => import("./ui/HomeLayout.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
@@ -20,13 +22,18 @@ function App() {
   const router = createBrowserRouter([
     {
       element: <MainLayout />,
+      errorElement: <Error />, // Catch errors for all child routes under MainLayout
       children: [
-        { element: <HomePage />, path: "/", errorElement: <Error /> },
-        {
-          element: <Login />,
-          path: "/login",
-          errorElement: <Error />,
-        },
+        { element: <HomePage />, path: "/" },
+        { element: <Login />, path: "/login" },
+      ],
+    },
+    {
+      element: <Dashboard />,
+      path: "/dashboard",
+      errorElement: <Error />,
+      children: [
+        { element: <UserPage />, path: "user" }, // Relative path without /dashboard
       ],
     },
   ]);
